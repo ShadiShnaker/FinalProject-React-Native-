@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignContent: "center",
-    //backgroundColor: "#ECFCFC",
     justifyContent: "space-between",
   },
 
