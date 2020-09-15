@@ -1,14 +1,41 @@
 import React from "react";
-import { Text, StyleSheet, View, Button, TouchableOpacity } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Button,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
+import GoogleSignIn from "../components/GoogleSignIn";
+
+const backGround = require("../../assets/img1.jpg");
 
 const SignInScreen = () => {
-  return <View style={styles.Container}></View>;
+  return (
+    <View style={styles.Container}>
+      <ImageBackground source={backGround} style={styles.backImg}>
+        <View style={styles.view1}>
+          <GoogleSignIn />
+        </View>
+      </ImageBackground>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-    backgroundColor: "#52677D",
+  },
+
+  backImg: {
+    flex: 1,
+    resizeMode: "stretch",
+    justifyContent: "center",
+  },
+
+  view1: {
+    paddingTop: 600,
   },
 });
 
