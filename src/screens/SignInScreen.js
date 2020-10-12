@@ -1,41 +1,43 @@
-import React from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  Button,
-  TouchableOpacity,
-  ImageBackground,
-} from "react-native";
-import GoogleSignIn from "../components/GoogleSignIn";
+import React, { useState } from "react";
+import { Text, View, StyleSheet, Button } from "react-native";
+import InAppAuth from "../components/InAppAuth";
 
-const backGround = require("../../assets/img1.jpg");
+const SignInScreen = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
 
-const SignInScreen = () => {
   return (
-    <View style={styles.Container}>
-      <ImageBackground source={backGround} style={styles.backImg}>
-        <View style={styles.view1}>
-          <GoogleSignIn />
-        </View>
-      </ImageBackground>
+    <View style={styles.container}>
+      <View style={styles.View1}>
+        <InAppAuth
+          buttonTitle='Sign In'
+          email={email}
+          onChangeEmail={(newEmail) => setEmail(newEmail)}
+          pass={pass}
+          onChangePass={(newPass) => setPass(newPass)}
+          onSubmitEmail={() => console.log("Email submited")}
+          onSubmitPass={() => console.log("Pass submited")}
+        />
+      </View>
+      <View>
+        <Button
+          title={"HomeScreen"}
+          onPress={() => navigation.navigate("Home")}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  Container: {
+  container: {
     flex: 1,
+    justifyContent: "space-between",
+    backgroundColor: "#52677D",
   },
 
-  backImg: {
-    flex: 1,
-    resizeMode: "stretch",
-    justifyContent: "center",
-  },
-
-  view1: {
-    paddingTop: 600,
+  View1: {
+    paddingTop: 300,
   },
 });
 

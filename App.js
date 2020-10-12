@@ -1,37 +1,70 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { createAppContainer } from "react-navigation";
+import { createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import HomeScreen from "./src/screens/HomeScreen";
+import { createDrawerNavigator } from "react-navigation-drawer";
+import WelcomeScreen from "./src/screens/WelcomeScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
 import SignInScreen from "./src/screens/SignInScreen";
-import * as firebase from "firebase";
+import HomeScreen from "./src/screens/HomeScreen";
+import SettingsScreen from "./src/screens/SettingsScreen";
+import * as firebase from "firebase/app";
+import { firebaseConfig } from "./config/config";
+import { Inonicons } from "@expo/vector-icons";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCH_4XXf5iLpWqYjkAmViFkCsOV-VjqQj0",
-  authDomain: "allinfit-caa00.firebaseapp.com",
-  databaseURL: "https://allinfit-caa00.firebaseio.com",
-  projectId: "allinfit-caa00",
-  storageBucket: "allinfit-caa00.appspot.com",
-  messagingSenderId: "840905150664",
-  appId: "1:840905150664:web:924a888803bf26e4bc55fd",
-  measurementId: "G-SCYPMCDPCP",
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const AppDrawerNavigator = createDrawerNavigator({
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: {
+      title: "Home",
+    },
+  },
 
-const navigator = createStackNavigator(
+  Settings: {
+    screen: SettingsScreen,
+    navigationOptions: {
+      title: "Settings",
+    },
+  },
+});
+
+const AppStackNavigator = createStackNavigator(
   {
-    Home: HomeScreen,
-    signUp: SignUpScreen,
-    signIn: SignInScreen,
+    Welcome: WelcomeScreen,
+    SignUp: SignUpScreen,
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Welcome",
     defaultNavigationOptions: {
-      title: "AllinFit",
+      headerShown: false,
     },
   }
 );
 
-export default createAppContainer(navigator);
+const AppSwitchNavigator = createSwitchNavigator({
+  AppStackNavigator,
+  AppDrawerNavigator,
+  SignIn: SignInScreen,
+});
+
+const AppContainer = createAppContainer(AppSwitchNavigator);
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.initilizeFirebase();
+  }
+
+  initilizeFirebase = () => {
+    if (!firebase.app.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+  };
+
+  render() {
+    return <AppContainer />;
+  }
+}
+
+export default App;
