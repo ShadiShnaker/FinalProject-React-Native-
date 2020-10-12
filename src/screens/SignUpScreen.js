@@ -1,13 +1,49 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import InAppAuth from "../components/InAppAuth";
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+import DeprecatedViewPropTypes from "react-native/Libraries/DeprecatedPropTypes/DeprecatedViewPropTypes";
 
 const SignUpScreen = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
+  const onSignUp = async () => {
+    setIsLoading(true);
+    if(email && pass){
+      try{
+        const response = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, pass);
+        if(response){
+          setIsLoading(false);
+        }
+      }catch(error){
+        setIsLoading(false);
+        switch(error.code){
+          case 'auth/email-already-in-use':
+            alert('user already Exists. Try loggin in')
+          break;
+
+          case 'auth/invalid-email':
+            alert('Email is not correct')
+        }
+      }
+    }
+    else{
+      alert('Please enter email and password');
+    }
+}
   return (
     <View style={styles.container}>
+      {isLoading ?
+      <View style = {[StyleSheet.absoluteFill,{alignItems:'center', justifyContent:'center',
+      zIndex: 1000, elevation:1000}]}>
+        <ActivityIndicator size='large' color= 'blue'/>
+      </View>
+      :null}
       <View style={styles.View1}>
         <InAppAuth
           buttonTitle='Sign Up'
@@ -15,8 +51,7 @@ const SignUpScreen = () => {
           onChangeEmail={(newEmail) => setEmail(newEmail)}
           pass={pass}
           onChangePass={(newPass) => setPass(newPass)}
-          onSubmitEmail={() => console.log("Email submited")}
-          onSubmitPass={() => console.log("Pass submited")}
+          onButtonSubmit={onSignUp}
         />
       </View>
     </View>

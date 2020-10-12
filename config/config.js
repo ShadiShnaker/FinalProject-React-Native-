@@ -1,12 +1,12 @@
 import * as firebase from "firebase";
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyCH_4XXf5iLpWqYjkAmViFkCsOV-VjqQj0",
-  authDomain: "allinfit-caa00.firebaseapp.com",
-  databaseURL: "https://allinfit-caa00.firebaseio.com",
-  projectId: "allinfit-caa00",
-  storageBucket: "allinfit-caa00.appspot.com",
-  messagingSenderId: "840905150664",
-  appId: "1:840905150664:web:6eac7d525f187e92bc55fd",
-  measurementId: "G-C2FH4R3HEE",
+  apiKey: "AIzaSyCrCgkgmMMlgiGaUKRmojkh8BsUnS_wAQw",
+  authDomain: "allinfit-6a8ea.firebaseapp.com",
+  databaseURL: "https://allinfit-6a8ea.firebaseio.com",
+  projectId: "allinfit-6a8ea",
+  storageBucket: "allinfit-6a8ea.appspot.com",
+  messagingSenderId: "70046026016",
+  appId: "1:70046026016:web:75dcf3c9e916d59f70af45",
+  measurementId: "G-XV29L888F8"
 };

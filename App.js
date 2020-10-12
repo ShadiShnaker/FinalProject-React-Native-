@@ -9,6 +9,7 @@ import SignUpScreen from "./src/screens/SignUpScreen";
 import SignInScreen from "./src/screens/SignInScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
+import LoadingScreen from "./src/screens/LoadingScreen";
 import * as firebase from "firebase/app";
 import { firebaseConfig } from "./config/config";
 import { Inonicons } from "@expo/vector-icons";
@@ -46,6 +47,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   AppStackNavigator,
   AppDrawerNavigator,
   SignIn: SignInScreen,
+  LoadingScreen,
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
@@ -57,7 +59,7 @@ class App extends React.Component {
   }
 
   initilizeFirebase = () => {
-    if (!firebase.app.length) {
+    if(!firebase.apps.length){
       firebase.initializeApp(firebaseConfig);
     }
   };

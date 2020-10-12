@@ -12,12 +12,12 @@ const InAppAuth = (props) => {
     <View style={styles.container}>
       <View style={styles.BackGroundInput}>
         <TextInput
-          placeholder='Email'
+          placeholder='abc@example.com'
           autoCapitalize='none'
           autoCorrect={false}
+          keyboardType="email-address"
           value={props.email}
           onChangeText={(newEmail) => props.onChangeEmail(newEmail)}
-          onEndEditing={props.onSubmitEmail}
         />
       </View>
       <View style={styles.BackGroundInput}>
@@ -25,15 +25,16 @@ const InAppAuth = (props) => {
           placeholder='Password'
           autoCapitalize='none'
           autoCorrect={false}
+          secureTextEntry
           value={props.pass}
           onChangeText={(newPass) => props.onChangePass(newPass)}
-          onEndEditing={props.onSubmitPass}
         />
       </View>
 
       <View>
         <TouchableOpacity
           style={[styles.BackGroundInput, { backgroundColor: "blue" }]}
+          onPress = {props.onButtonSubmit}
         >
           <Text style={{ alignSelf: "center", color: "#fff" }}>
             {props.buttonTitle}
