@@ -16,7 +16,8 @@ class LoadingScreen extends Component{
                 this.props.navigation.navigate('Home', {user: user});
             }
             else{
-                this.props.navigation.navigate('AppStackNavigator');
+                //navigate to Sign up
+                this.props.navigation.navigate('SignUp');
             }
         })
     }

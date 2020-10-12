@@ -26,6 +26,7 @@ const SignInScreen = ({ navigation }) => {
         {
           case 'auth/user-not-found':
             alert ('A user with that email does not exist. Try signing Up!')
+            navigation.navigate('LoadingScreen');
           break;
 
           case 'auth/invalid-email':
