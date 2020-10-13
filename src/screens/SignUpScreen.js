@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import InAppAuth from "../components/InAppAuth";
 import * as firebase from 'firebase/app'
-import 'firebase/auth'
-import DeprecatedViewPropTypes from "react-native/Libraries/DeprecatedPropTypes/DeprecatedViewPropTypes";
+import 'firebase/auth';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -19,6 +18,7 @@ const SignUpScreen = () => {
         .createUserWithEmailAndPassword(email, pass);
         if(response){
           setIsLoading(false);
+          navigation.navigate('SignIn');
         }
       }catch(error){
         setIsLoading(false);

@@ -16,7 +16,7 @@ const SettingsScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={{ paddingTop: 70 }}>Settings</Text>
-      <Button title='Lof Off' onPress={() => signOut()} />
+      <Button title='Lof Out' onPress={() => signOut()} />
     </View>
   );
 };
