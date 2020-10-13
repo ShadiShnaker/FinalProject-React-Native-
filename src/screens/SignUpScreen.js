@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import InAppAuth from "../components/InAppAuth";
-import * as firebase from 'firebase/app'
-import 'firebase/auth';
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -11,39 +11,47 @@ const SignUpScreen = ({ navigation }) => {
 
   const onSignUp = async () => {
     setIsLoading(true);
-    if(email && pass){
-      try{
+    if (email && pass) {
+      try {
         const response = await firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, pass);
-        if(response){
+          .auth()
+          .createUserWithEmailAndPassword(email, pass);
+        if (response) {
           setIsLoading(false);
-          navigation.navigate('SignIn');
+          navigation.navigate("SignIn");
         }
-      }catch(error){
+      } catch (error) {
         setIsLoading(false);
-        switch(error.code){
-          case 'auth/email-already-in-use':
-            alert('user already Exists. Try loggin in')
-          break;
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            alert("user already Exists. Try loggin in");
+            break;
 
-          case 'auth/invalid-email':
-            alert('Email is not correct')
+          case "auth/invalid-email":
+            alert("Email is not correct");
         }
       }
+    } else {
+      alert("Please enter email and password");
     }
-    else{
-      alert('Please enter email and password');
-    }
-}
+  };
   return (
     <View style={styles.container}>
-      {isLoading ?
-      <View style = {[StyleSheet.absoluteFill,{alignItems:'center', justifyContent:'center',
-      zIndex: 1000, elevation:1000}]}>
-        <ActivityIndicator size='large' color= 'blue'/>
-      </View>
-      :null}
+      {isLoading ? (
+        <View
+          style={[
+            StyleSheet.absoluteFill,
+            {
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 1000,
+              elevation: 1000,
+            },
+          ]}
+        >
+          <ActivityIndicator size='large' color='blue' />
+        </View>
+      ) : null}
       <View style={styles.View1}>
         <InAppAuth
           buttonTitle='Sign Up'

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import InAppAuth from "../components/InAppAuth";
-import * as firebase from 'firebase/app'
-import 'firebase/auth'
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -11,33 +11,31 @@ const SignInScreen = ({ navigation }) => {
 
   const onSignIn = async () => {
     setIsLoading(true);
-    if(email && pass){
-      try{
+    if (email && pass) {
+      try {
         const response = await firebase
-        .auth()
-        .signInWithEmailAndPassword(email, pass);
-        if(response){
+          .auth()
+          .signInWithEmailAndPassword(email, pass);
+        if (response) {
           setIsLoading(false);
-          navigation.navigate('LoadingScreen');
+          navigation.navigate("LoadingScreen");
         }
-      }catch(error){
+      } catch (error) {
         setIsLoading(false);
-        switch(error.code)
-        {
-          case 'auth/user-not-found':
-            alert ('A user with that email does not exist. Try signing Up!')
-            navigation.navigate('LoadingScreen');
-          break;
+        switch (error.code) {
+          case "auth/user-not-found":
+            alert("A user with that email does not exist. Try signing Up!");
+            navigation.navigate("LoadingScreen");
+            break;
 
-          case 'auth/invalid-email':
-            alert('Please enter an email address')
+          case "auth/invalid-email":
+            alert("Please enter an email address");
         }
       }
+    } else {
+      alert("Please enter email and password");
     }
-    else{
-      alert('Please enter email and password');
-    }
-  }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.View1}>

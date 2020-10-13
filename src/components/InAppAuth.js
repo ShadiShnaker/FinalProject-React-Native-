@@ -15,7 +15,7 @@ const InAppAuth = (props) => {
           placeholder='abc@example.com'
           autoCapitalize='none'
           autoCorrect={false}
-          keyboardType="email-address"
+          keyboardType='email-address'
           value={props.email}
           onChangeText={(newEmail) => props.onChangeEmail(newEmail)}
         />
@@ -34,7 +34,7 @@ const InAppAuth = (props) => {
       <View>
         <TouchableOpacity
           style={[styles.BackGroundInput, { backgroundColor: "blue" }]}
-          onPress = {props.onButtonSubmit}
+          onPress={props.onButtonSubmit}
         >
           <Text style={{ alignSelf: "center", color: "#fff" }}>
             {props.buttonTitle}
