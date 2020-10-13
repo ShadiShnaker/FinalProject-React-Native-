@@ -44,10 +44,10 @@ const AppStackNavigator = createStackNavigator(
 );
 
 const AppSwitchNavigator = createSwitchNavigator({
+  LoadingScreen,
   AppStackNavigator,
   AppDrawerNavigator,
   SignIn: SignInScreen,
-  LoadingScreen,
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);

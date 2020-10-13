@@ -32,6 +32,7 @@ const SignUpScreen = ({ navigation }) => {
         }
       }
     } else {
+      setIsLoading(false);
       alert("Please enter email and password");
     }
   };
@@ -49,12 +50,15 @@ const SignUpScreen = ({ navigation }) => {
             },
           ]}
         >
-          <ActivityIndicator size='large' color='blue' />
+          <ActivityIndicator size='large' color='#F10E63' />
         </View>
       ) : null}
       <View style={styles.View1}>
+        <Text style={styles.HeaderText}>Sign Up</Text>
+      </View>
+      <View style={styles.View2}>
         <InAppAuth
-          buttonTitle='Sign Up'
+          buttonTitle='REGISTER'
           email={email}
           onChangeEmail={(newEmail) => setEmail(newEmail)}
           pass={pass}
@@ -69,12 +73,22 @@ const SignUpScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
     backgroundColor: "#52677D",
   },
-
   View1: {
-    paddingTop: 300,
+    flex: 0.1,
+    alignItems: "center",
+  },
+  View2: {
+    flex: 1,
+    paddingTop: 100,
+  },
+  HeaderText: {
+    paddingTop: 120,
+    fontSize: 25,
+    color: "#F10E63",
+    fontStyle: "italic",
+    fontWeight: "600",
   },
 });
 

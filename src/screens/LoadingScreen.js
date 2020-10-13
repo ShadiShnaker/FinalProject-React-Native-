@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import { firebaseConfig } from "../../config/config";
 
 class LoadingScreen extends Component {
   componentDidMount = () => {
@@ -13,10 +12,10 @@ class LoadingScreen extends Component {
     this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         //navigate to home screen
-        this.props.navigation.navigate("Home", { user: user });
+        this.props.navigation.navigate("Home", { user });
       } else {
         //navigate to Sign up
-        this.props.navigation.navigate("SignUp");
+        this.props.navigation.navigate("AppStackNavigator");
       }
     });
   };
@@ -30,6 +29,7 @@ class LoadingScreen extends Component {
         style={[
           StyleSheet.absoluteFill,
           {
+            backgroundColor: "#52677D",
             alignItems: "center",
             justifyContent: "center",
             zIndex: 1000,
@@ -37,7 +37,7 @@ class LoadingScreen extends Component {
           },
         ]}
       >
-        <ActivityIndicator size='large' color='blue' />
+        <ActivityIndicator size='large' color='#F10E63' />
       </View>
     );
   }
