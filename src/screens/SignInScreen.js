@@ -18,7 +18,15 @@ const SignInScreen = ({ navigation }) => {
           .signInWithEmailAndPassword(email, pass);
         if (response) {
           setIsLoading(false);
-          navigation.navigate("LoadingScreen");
+          if (firebase.auth().currentUser.emailVerified) {
+            navigation.navigate("LoadingScreen");
+          } else {
+            alert(
+              "User not verified! Please verify the email address for " +
+                email +
+                " ."
+            );
+          }
         }
       } catch (error) {
         setIsLoading(false);

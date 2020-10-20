@@ -15,10 +15,20 @@ const SignUpScreen = ({ navigation }) => {
       try {
         const response = await firebase
           .auth()
-          .createUserWithEmailAndPassword(email, pass);
+          .createUserWithEmailAndPassword(email, pass)
+          .then((res) => {
+            res.user
+              .sendEmailVerification()
+              .then(() => {
+                alert("A verification link has sent to your email account.");
+                navigation.navigate("SignIn");
+              })
+              .catch((err) => {
+                console.log("err");
+              });
+          });
         if (response) {
           setIsLoading(false);
-          navigation.navigate("SignIn");
         }
       } catch (error) {
         setIsLoading(false);
