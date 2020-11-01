@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  TouchableOpacity,
+} from "react-native";
 import InAppAuth from "../components/InAppAuth";
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -8,6 +14,18 @@ const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const onPassReset = () => {
+    const auth = firebase.auth();
+    const emailAddress = email;
+
+    try {
+      auth.sendPasswordResetEmail(emailAddress);
+      alert("Reset mail sent to your mail");
+    } catch (error) {
+      //error
+    }
+  };
 
   const onSignIn = async () => {
     setIsLoading(true);
@@ -38,6 +56,10 @@ const SignInScreen = ({ navigation }) => {
 
           case "auth/invalid-email":
             alert("Please enter an email address");
+            break;
+
+          case "auth/wrong-password":
+            alert("Wrong password");
         }
       }
     } else {
@@ -75,6 +97,11 @@ const SignInScreen = ({ navigation }) => {
           onButtonSubmit={onSignIn}
         />
       </View>
+      <View style={{ alignItems: "center", flex: 0.1 }}>
+        <TouchableOpacity onPress={onPassReset}>
+          <Text style={{ color: "#fff" }}>Forgot Password?</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -91,7 +118,7 @@ const styles = StyleSheet.create({
   },
 
   View2: {
-    flex: 1,
+    flex: 0.9,
     paddingTop: 100,
   },
   HeaderText: {

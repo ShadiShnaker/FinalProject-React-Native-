@@ -10,6 +10,7 @@ import SignInScreen from "./src/screens/SignInScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
 import LoadingScreen from "./src/screens/LoadingScreen";
+import EditScreen from "./src/screens/EditScreen";
 import * as firebase from "firebase/app";
 import { firebaseConfig } from "./config/config";
 import { Inonicons } from "@expo/vector-icons";
@@ -26,6 +27,13 @@ const AppDrawerNavigator = createDrawerNavigator({
     screen: SettingsScreen,
     navigationOptions: {
       title: "Settings",
+    },
+  },
+
+  Edit: {
+    screen: EditScreen,
+    navigationOptions: {
+      title: "Edit Profile",
     },
   },
 });
