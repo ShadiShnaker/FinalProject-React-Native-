@@ -9,7 +9,7 @@ import {
 
 import Edit from "../components/Edit";
 
-const EditProfile = () => {
+const EditProfile = ({ navigation }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [weight, setWeight] = useState("");

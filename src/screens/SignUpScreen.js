@@ -8,6 +8,7 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onSignUp = async () => {
     setIsLoading(true);
@@ -24,7 +25,7 @@ const SignUpScreen = ({ navigation }) => {
                 navigation.navigate("SignIn");
               })
               .catch((err) => {
-                console.log("err");
+                setErrorMessage("Error Sending Verification email");
               });
           });
         if (response) {
@@ -34,11 +35,11 @@ const SignUpScreen = ({ navigation }) => {
         setIsLoading(false);
         switch (error.code) {
           case "auth/email-already-in-use":
-            alert("user already Exists. Try loggin in");
+            setErrorMessage("User already Exists. Try loggin in");
             break;
 
           case "auth/invalid-email":
-            alert("Email is not correct");
+            setErrorMessage("Email is not correct");
         }
       }
     } else {
@@ -75,6 +76,11 @@ const SignUpScreen = ({ navigation }) => {
           onChangePass={(newPass) => setPass(newPass)}
           onButtonSubmit={onSignUp}
         />
+      </View>
+      <View style={styles.View1}>
+        {errorMessage ? (
+          <Text style={{ color: "#F10E63" }}>{errorMessage}</Text>
+        ) : null}
       </View>
     </View>
   );

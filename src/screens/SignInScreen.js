@@ -14,6 +14,7 @@ const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onPassReset = () => {
     const auth = firebase.auth();
@@ -21,9 +22,9 @@ const SignInScreen = ({ navigation }) => {
 
     try {
       auth.sendPasswordResetEmail(emailAddress);
-      alert("Reset mail sent to your mail");
+      alert("Password Reset Request ent to you email " + email);
     } catch (error) {
-      //error
+      setErrorMessage("Somthing went wrong");
     }
   };
 
@@ -50,16 +51,18 @@ const SignInScreen = ({ navigation }) => {
         setIsLoading(false);
         switch (error.code) {
           case "auth/user-not-found":
-            alert("A user with that email does not exist. Try signing Up!");
+            setErrorMessage(
+              "A user with that email does not exist. Try signing Up!"
+            );
             navigation.navigate("LoadingScreen");
             break;
 
           case "auth/invalid-email":
-            alert("Please enter an email address");
+            setErrorMessage("Please enter a valid email address");
             break;
 
           case "auth/wrong-password":
-            alert("Wrong password");
+            setErrorMessage("Wrong password");
         }
       }
     } else {
@@ -98,6 +101,9 @@ const SignInScreen = ({ navigation }) => {
         />
       </View>
       <View style={{ alignItems: "center", flex: 0.1 }}>
+        {errorMessage ? (
+          <Text style={{ color: "#F10E63" }}>{errorMessage}</Text>
+        ) : null}
         <TouchableOpacity onPress={onPassReset}>
           <Text style={{ color: "#fff" }}>Forgot Password?</Text>
         </TouchableOpacity>
@@ -109,7 +115,7 @@ const SignInScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
+    //justifyContent: "space-between",
     backgroundColor: "#52677D",
   },
   View1: {
