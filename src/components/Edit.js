@@ -6,11 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import {
-  MaterialCommunityIcons,
-  FontAwesome5,
-  Foundation,
-} from "@expo/vector-icons";
+import { MaterialCommunityIcons, FontAwesome5 } from "@expo/vector-icons";
 
 const Edit = (props) => {
   return (
@@ -39,6 +35,7 @@ const Edit = (props) => {
         />
         <TextInput
           placeholder='Age'
+          keyboardType='numeric'
           value={props.age}
           onChangeText={(newAge) => props.onChangeAge(newAge)}
         />
@@ -52,9 +49,11 @@ const Edit = (props) => {
         />
         <TextInput
           placeholder='Weight'
+          keyboardType='numeric'
           value={props.weight}
-          onChangeText={(newWeight) => props.onChangeWeight(newWeight)}
+          onChangeText={(newWeight) => props.onChnageWeight(newWeight)}
         />
+        <Text style={{ marginLeft: 220, paddingTop: 10 }}>KG</Text>
       </View>
 
       <View style={styles.BackGroundInput}>
@@ -66,26 +65,11 @@ const Edit = (props) => {
         />
         <TextInput
           placeholder='Height'
+          keyboardType='numeric'
           value={props.height}
           onChangeText={(newHeight) => props.onChangeHeight(newHeight)}
         />
-      </View>
-      <View style={{ flex: 0.3 }}>
-        <Text style={{ marginHorizontal: 30, fontSize: 15, color: "#c8b7b3" }}>
-          Select your gender:
-        </Text>
-        <View style={styles.genderView}>
-          <View>
-            <TouchableOpacity>
-              <Foundation name='male-symbol' size={70} color='#0846c1' />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <TouchableOpacity>
-              <Foundation name='female-symbol' size={70} color='#c5287e' />
-            </TouchableOpacity>
-          </View>
-        </View>
+        <Text style={{ marginLeft: 220, paddingTop: 10 }}>CM</Text>
       </View>
 
       <View>
@@ -108,7 +92,6 @@ const Edit = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //justifyContent: "space-between",
   },
   BackGroundInput: {
     backgroundColor: "#898693",
@@ -134,12 +117,6 @@ const styles = StyleSheet.create({
   Icon: {
     marginHorizontal: 5,
     paddingTop: 7,
-  },
-
-  genderView: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    paddingTop: 10,
   },
 });
 

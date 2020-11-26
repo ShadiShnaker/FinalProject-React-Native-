@@ -1,3 +1,4 @@
+/*
 const functions = require("firebase-functions");
 
 const admin = require("firebase-admin");
@@ -18,3 +19,4 @@ exports.createUserInDatabase = functions.auth.user().onCreate(async (user) => {
     return error;
   }
 });
+*/

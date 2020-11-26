@@ -1,14 +1,28 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  LogBox,
+} from "react-native";
 import InAppAuth from "../components/InAppAuth";
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/database";
 
 const SignUpScreen = ({ navigation }) => {
+  LogBox.ignoreLogs(["Setting a timer"]);
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const name = navigation.getParam("name", "");
+  const age = navigation.getParam("age", "");
+  const weight = navigation.getParam("weight", "");
+  const height = navigation.getParam("height", "");
+  const gender = navigation.getParam("gender", "");
+  const goal = navigation.getParam("goal", "");
 
   const onSignUp = async () => {
     setIsLoading(true);
@@ -16,20 +30,26 @@ const SignUpScreen = ({ navigation }) => {
       try {
         const response = await firebase
           .auth()
-          .createUserWithEmailAndPassword(email, pass)
-          .then((res) => {
-            res.user
-              .sendEmailVerification()
-              .then(() => {
-                alert("A verification link has sent to your email account.");
-                navigation.navigate("SignIn");
-              })
-              .catch((err) => {
-                setErrorMessage("Error Sending Verification email");
-              });
-          });
+          .createUserWithEmailAndPassword(email, pass);
+
         if (response) {
           setIsLoading(false);
+          const user = await firebase
+            .database()
+            .ref("users/" + response.user.uid)
+            .set({
+              email: response.user.email,
+              name: name,
+              age: age,
+              gender: gender,
+              weight: weight,
+              height: height,
+              goal: goal,
+              uid: response.user.uid,
+            });
+          await firebase.auth().currentUser.sendEmailVerification();
+          alert("A verification link has sent to your email account.");
+          navigation.navigate("SignIn");
         }
       } catch (error) {
         setIsLoading(false);
@@ -47,6 +67,7 @@ const SignUpScreen = ({ navigation }) => {
       alert("Please enter email and password");
     }
   };
+
   return (
     <View style={styles.container}>
       {isLoading ? (

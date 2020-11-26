@@ -11,6 +11,9 @@ import HomeScreen from "./src/screens/HomeScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
 import LoadingScreen from "./src/screens/LoadingScreen";
 import EditScreen from "./src/screens/EditScreen";
+import UserInfoScreen from "./src/screens/UserInfoScreens/UserInfoScreen";
+import UserGoalScreen from "./src/screens/UserInfoScreens/UserGoalScreen";
+import UserGenderScreen from "./src/screens/UserInfoScreens/UserGenderScreen";
 import * as firebase from "firebase/app";
 import { firebaseConfig } from "./config/config";
 import { Inonicons } from "@expo/vector-icons";
@@ -41,6 +44,9 @@ const AppDrawerNavigator = createDrawerNavigator({
 const AppStackNavigator = createStackNavigator(
   {
     Welcome: WelcomeScreen,
+    UserGoal: UserGoalScreen,
+    UserGender: UserGenderScreen,
+    UserInfo: UserInfoScreen,
     SignUp: SignUpScreen,
   },
   {

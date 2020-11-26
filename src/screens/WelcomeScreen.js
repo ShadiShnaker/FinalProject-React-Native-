@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
           {/* Sign Up Button */}
           <TouchableOpacity
             style={[styles.signUpButtonStyle, styles.ButtonStyle]}
-            onPress={() => navigation.navigate("SignUp")}
+            onPress={() => navigation.navigate("UserGoal")}
           >
             <Text style={styles.HeaderText2}>Sign Up</Text>
           </TouchableOpacity>
