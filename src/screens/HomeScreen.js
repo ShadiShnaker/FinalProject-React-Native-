@@ -57,7 +57,14 @@ const HomeScreen = ({ navigation }) => {
           {welcomeMessage}
         </Text>
 
-        <Text style={{ paddingLeft: 20, fontSize: 25, color: "#FFF" }}>
+        <Text
+          style={{
+            paddingLeft: 20,
+            fontSize: 25,
+            color: "#FFF",
+            fontWeight: "bold",
+          }}
+        >
           {name}
         </Text>
 

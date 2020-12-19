@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-import { Assets } from "react-navigation-stack";
 
 const backGround2 = require("../../assets/background2.jpg");
 
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
 
   View1: {
     flex: 0.25,
-    backgroundColor: "#52677D",
+    backgroundColor: "#772E92",
     borderBottomColor: "#6BE11D",
     justifyContent: "center",
     alignItems: "center",

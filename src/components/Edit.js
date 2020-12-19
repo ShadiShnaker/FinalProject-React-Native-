@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   TextInput,
+  KeyboardAvoidingView,
 } from "react-native";
 import { MaterialCommunityIcons, FontAwesome5 } from "@expo/vector-icons";
 
@@ -76,9 +77,9 @@ const Edit = (props) => {
         <TouchableOpacity style={styles.button} onPress={props.onModifySubmit}>
           <Text
             style={{
-              color: "#fff",
+              color: "#86789E",
               fontSize: 20,
-              color: "#F10E63",
+              fontWeight: "bold",
             }}
           >
             {props.buttonTitle}
@@ -91,12 +92,13 @@ const Edit = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.45,
   },
   BackGroundInput: {
-    backgroundColor: "#898693",
+    backgroundColor: "#fff",
     height: 40,
-    borderWidth: 1,
+    borderColor: "#EBD9F2",
+    borderWidth: 3,
     flexDirection: "row",
     marginHorizontal: 30,
     marginVertical: 8,
@@ -106,8 +108,9 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     borderRadius: 10,
-    borderColor: "#fff",
-    backgroundColor: "#898693",
+    borderColor: "#EBD9F2",
+    borderWidth: 2,
+    backgroundColor: "#D9DBF2",
     height: 40,
     borderWidth: 1,
     marginHorizontal: 30,

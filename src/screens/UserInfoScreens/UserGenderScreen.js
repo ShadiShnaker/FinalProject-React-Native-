@@ -31,14 +31,16 @@ const UserGenderScreen = ({ navigation }) => {
           alignSelf: "center",
           paddingTop: 180,
           fontSize: 15,
-          color: "#c8b7b3",
+          color: "#FFF",
         }}
       >
         Select your gender:
       </Text>
       <View style={styles.genderView}>
         <View
-          style={{ backgroundColor: value === "flag1" ? "#CCE5FF" : "#52677D" }}
+          style={{
+            backgroundColor: value === "flag1" ? "#CCE5FF" : "#772E92",
+          }}
         >
           <TouchableHighlight
             onPress={(newGender) => {
@@ -47,11 +49,13 @@ const UserGenderScreen = ({ navigation }) => {
             }}
             underlayColor='#fff'
           >
-            <Foundation name='male-symbol' size={150} color='#0846c1' />
+            <Foundation name='male-symbol' size={150} color='black' />
           </TouchableHighlight>
         </View>
         <View
-          style={{ backgroundColor: value === "flag2" ? "#FFCCFF" : "#52677D" }}
+          style={{
+            backgroundColor: value === "flag2" ? "#FFCCFF" : "#772E92",
+          }}
         >
           <TouchableHighlight
             onPress={(newGender) => {
@@ -60,7 +64,7 @@ const UserGenderScreen = ({ navigation }) => {
             }}
             underlayColor='#fff'
           >
-            <Foundation name='female-symbol' size={150} color='#c5287e' />
+            <Foundation name='female-symbol' size={150} color='black' />
           </TouchableHighlight>
         </View>
       </View>
@@ -76,7 +80,7 @@ const UserGenderScreen = ({ navigation }) => {
         />
       </TouchableHighlight>
       {errorMessage ? (
-        <Text style={{ color: "#F10E63", alignSelf: "center" }}>
+        <Text style={{ color: "#fff", alignSelf: "center" }}>
           {errorMessage}
         </Text>
       ) : null}
@@ -87,7 +91,7 @@ const UserGenderScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#52677D",
+    backgroundColor: "#772E92",
     //justifyContent: "center",
   },
 

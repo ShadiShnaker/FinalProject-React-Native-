@@ -82,7 +82,7 @@ const SignUpScreen = ({ navigation }) => {
             },
           ]}
         >
-          <ActivityIndicator size='large' color='#F10E63' />
+          <ActivityIndicator size='large' color='black' />
         </View>
       ) : null}
       <View style={styles.View1}>
@@ -110,20 +110,20 @@ const SignUpScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#52677D",
+    backgroundColor: "#772E92",
   },
   View1: {
     flex: 0.1,
     alignItems: "center",
   },
   View2: {
-    flex: 1,
+    flex: 0.5,
     paddingTop: 100,
   },
   HeaderText: {
     paddingTop: 120,
     fontSize: 25,
-    color: "#F10E63",
+    color: "#FFF",
     fontStyle: "italic",
     fontWeight: "600",
   },

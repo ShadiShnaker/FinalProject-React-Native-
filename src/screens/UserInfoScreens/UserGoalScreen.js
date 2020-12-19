@@ -33,7 +33,7 @@ const UserGoalScreen = ({ navigation }) => {
             styles.ButtonStyle,
             {
               paddingHorizontal: 55,
-              backgroundColor: value === "flag1" ? "#FF99CC" : "#F10E63",
+              backgroundColor: value === "flag1" ? "#EBD9F2" : "#fff",
             },
           ]}
           onPress={(newGoal) => {
@@ -43,10 +43,14 @@ const UserGoalScreen = ({ navigation }) => {
           underlayColor='#fff'
         >
           <View>
-            <Text style={[styles.TextStyle, { fontSize: 18 }]}>
+            <Text
+              style={[styles.TextStyle, { fontSize: 18, fontWeight: "bold" }]}
+            >
               Maintain Weight
             </Text>
-            <Text style={[styles.TextStyle, { fontSize: 12, color: "#fff" }]}>
+            <Text
+              style={[styles.TextStyle, { fontSize: 12, color: "#772E92" }]}
+            >
               Optimize your well-being
             </Text>
           </View>
@@ -58,7 +62,7 @@ const UserGoalScreen = ({ navigation }) => {
             styles.ButtonStyle,
             {
               paddingHorizontal: 25,
-              backgroundColor: value === "flag2" ? "#FF99CC" : "#F10E63",
+              backgroundColor: value === "flag2" ? "#EBD9F2" : "#fff",
             },
           ]}
           onPress={(newGoal) => {
@@ -68,10 +72,14 @@ const UserGoalScreen = ({ navigation }) => {
           underlayColor='#fff'
         >
           <View>
-            <Text style={[styles.TextStyle, { fontSize: 18 }]}>
+            <Text
+              style={[styles.TextStyle, { fontSize: 18, fontWeight: "bold" }]}
+            >
               Gain Weight
             </Text>
-            <Text style={[styles.TextStyle, { fontSize: 12, color: "#fff" }]}>
+            <Text
+              style={[styles.TextStyle, { fontSize: 12, color: "#772E92" }]}
+            >
               Build strength with high-protein food
             </Text>
           </View>
@@ -81,7 +89,7 @@ const UserGoalScreen = ({ navigation }) => {
         <TouchableHighlight
           style={[
             styles.ButtonStyle,
-            { backgroundColor: value === "flag3" ? "#FF99CC" : "#F10E63" },
+            { backgroundColor: value === "flag3" ? "#EBD9F2" : "#FFF" },
           ]}
           onPress={(newGoal) => {
             _handleClick("flag3");
@@ -90,10 +98,14 @@ const UserGoalScreen = ({ navigation }) => {
           underlayColor='#fff'
         >
           <View>
-            <Text style={[styles.TextStyle, { fontSize: 18 }]}>
+            <Text
+              style={[styles.TextStyle, { fontSize: 18, fontWeight: "bold" }]}
+            >
               Lose Weight
             </Text>
-            <Text style={[styles.TextStyle, { fontSize: 12, color: "#fff" }]}>
+            <Text
+              style={[styles.TextStyle, { fontSize: 12, color: "#772E92" }]}
+            >
               Manage your weight by eating smarter
             </Text>
           </View>
@@ -107,7 +119,7 @@ const UserGoalScreen = ({ navigation }) => {
         />
       </TouchableHighlight>
       {errorMessage ? (
-        <Text style={{ color: "#F10E63" }}>{errorMessage}</Text>
+        <Text style={{ color: "#FFF" }}>{errorMessage}</Text>
       ) : null}
     </View>
   );
@@ -116,13 +128,13 @@ const UserGoalScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#52677D",
+    backgroundColor: "#772E92",
     justifyContent: "center",
     alignItems: "center",
   },
 
   ButtonStyle: {
-    backgroundColor: "#F10E63",
+    backgroundColor: "#fff",
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 40,

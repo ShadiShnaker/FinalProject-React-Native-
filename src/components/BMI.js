@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 10,
     borderColor: "#772E92",
-    borderWidth: 1,
+    borderWidth: 3,
     marginHorizontal: 15,
-    marginTop: 40,
+    marginTop: 20,
     paddingBottom: 10,
   },
 

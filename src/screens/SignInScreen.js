@@ -84,7 +84,7 @@ const SignInScreen = ({ navigation }) => {
             },
           ]}
         >
-          <ActivityIndicator size='large' color='#F10E63' />
+          <ActivityIndicator size='large' color='black' />
         </View>
       ) : null}
       <View style={styles.View1}>
@@ -102,7 +102,7 @@ const SignInScreen = ({ navigation }) => {
       </View>
       <View style={{ alignItems: "center", flex: 0.1 }}>
         {errorMessage ? (
-          <Text style={{ color: "#F10E63" }}>{errorMessage}</Text>
+          <Text style={{ color: "#FFF" }}>{errorMessage}</Text>
         ) : null}
         <TouchableOpacity onPress={onPassReset}>
           <Text style={{ color: "#fff" }}>Forgot Password?</Text>
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     //justifyContent: "space-between",
-    backgroundColor: "#52677D",
+    backgroundColor: "#772E92",
   },
   View1: {
     flex: 0.1,
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   HeaderText: {
     paddingTop: 120,
     fontSize: 25,
-    color: "#F10E63",
+    color: "#FFF",
     fontStyle: "italic",
     fontWeight: "600",
   },

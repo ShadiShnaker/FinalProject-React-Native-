@@ -1,11 +1,5 @@
-import React, { useState } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, StyleSheet, View } from "react-native";
 import Edit from "../../components/Edit";
 
 const UserInfoScreen = ({ navigation }) => {
@@ -35,32 +29,34 @@ const UserInfoScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.View1}>
-        <Text style={{ alignSelf: "center", color: "#F10E63", fontSize: 20 }}>
-          Tell us more
+      <Text
+        style={{
+          alignSelf: "center",
+          color: "#FFF",
+          fontSize: 20,
+          paddingTop: 20,
+          paddingBottom: 20,
+        }}
+      >
+        Tell us more
+      </Text>
+      {errorMessage ? (
+        <Text style={{ color: "#FFF", alignSelf: "center", fontSize: 16 }}>
+          {errorMessage}
         </Text>
-        <Edit
-          name={name}
-          onChangeName={(newName) => setName(newName)}
-          age={age}
-          onChangeAge={(newAge) => setAge(newAge)}
-          weight={weight}
-          onChnageWeight={(newWeight) => setWeight(newWeight)}
-          height={height}
-          onChangeHeight={(newHeight) => setHeight(newHeight)}
-          buttonTitle='Modify'
-          onModifySubmit={onInfoSubmit}
-        />
-        <View>
-          {errorMessage ? (
-            <Text
-              style={{ color: "#F10E63", alignSelf: "center", fontSize: 16 }}
-            >
-              {errorMessage}
-            </Text>
-          ) : null}
-        </View>
-      </View>
+      ) : null}
+      <Edit
+        name={name}
+        onChangeName={(newName) => setName(newName)}
+        age={age}
+        onChangeAge={(newAge) => setAge(newAge)}
+        weight={weight}
+        onChnageWeight={(newWeight) => setWeight(newWeight)}
+        height={height}
+        onChangeHeight={(newHeight) => setHeight(newHeight)}
+        buttonTitle='Modify'
+        onModifySubmit={onInfoSubmit}
+      />
     </View>
   );
 };
@@ -68,13 +64,8 @@ const UserInfoScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#52677D",
-  },
-
-  View1: {
-    flex: 1,
-    justifyContent: "center",
-    paddingTop: 100,
+    backgroundColor: "#772E92",
+    paddingTop: 60,
   },
 });
 

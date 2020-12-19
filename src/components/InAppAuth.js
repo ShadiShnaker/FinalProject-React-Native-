@@ -43,9 +43,9 @@ const InAppAuth = (props) => {
         <TouchableOpacity style={styles.button} onPress={props.onButtonSubmit}>
           <Text
             style={{
-              color: "#fff",
+              color: "#86789E",
               fontSize: 20,
-              color: "#F10E63",
+              fontWeight: "bold",
             }}
           >
             {props.buttonTitle}
@@ -58,13 +58,13 @@ const InAppAuth = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.5,
     //justifyContent: "space-between",
   },
   BackGroundInput: {
-    backgroundColor: "#898693",
+    backgroundColor: "#FFF",
     height: 40,
-    borderWidth: 1,
+    borderWidth: 2,
     flexDirection: "row",
     marginHorizontal: 30,
     marginVertical: 15,
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     borderRadius: 10,
-    borderColor: "#fff",
-    backgroundColor: "#898693",
+    borderColor: "#D9DBF2",
+    backgroundColor: "#D9DBF2",
     height: 40,
     borderWidth: 1,
     marginHorizontal: 30,

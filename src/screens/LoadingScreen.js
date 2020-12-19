@@ -29,7 +29,7 @@ const LoadingScreen = ({ navigation }) => {
       style={[
         StyleSheet.absoluteFill,
         {
-          backgroundColor: "#52677D",
+          backgroundColor: "#772E92",
           alignItems: "center",
           justifyContent: "center",
           zIndex: 1000,
@@ -37,7 +37,7 @@ const LoadingScreen = ({ navigation }) => {
         },
       ]}
     >
-      <ActivityIndicator size='large' color='#F10E63' />
+      <ActivityIndicator size='large' color='black' />
     </View>
   );
 };
