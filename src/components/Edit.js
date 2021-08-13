@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   StyleSheet,
   View,
   TouchableOpacity,
   TextInput,
-  KeyboardAvoidingView,
+  Picker,
 } from "react-native";
+/*
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
+*/
 import { MaterialCommunityIcons, FontAwesome5 } from "@expo/vector-icons";
 
 const Edit = (props) => {
@@ -72,6 +77,26 @@ const Edit = (props) => {
         />
         <Text style={{ marginLeft: 220, paddingTop: 10 }}>CM</Text>
       </View>
+      <View>
+        <Text style={{ alignSelf: "center", color: "#fff" }}>
+          chronic diseases
+        </Text>
+      </View>
+
+      <View style={styles.BackGroundInput}>
+        <Picker
+          selectedValue={props.disease}
+          style={styles.PickerStyle}
+          onValueChange={(itemValue, itemIndex) =>
+            props.onChangeValue(itemValue)
+          }
+        >
+          <Picker.Item label='No' value='No' />
+          <Picker.Item label='sugar disease' value='sugar disease' />
+          <Picker.Item label='blood pressure' value='blood pressure' />
+          <Picker.Item label='hyperlipidemia' value='hyperlipidemia' />
+        </Picker>
+      </View>
 
       <View>
         <TouchableOpacity style={styles.button} onPress={props.onModifySubmit}>
@@ -92,12 +117,12 @@ const Edit = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.45,
+    marginBottom: 250,
   },
   BackGroundInput: {
-    backgroundColor: "#fff",
+    backgroundColor: "rgba(252, 252, 252, 0.8)",
     height: 40,
-    borderColor: "#EBD9F2",
+    borderColor: "rgba(255,255,255,0.3)",
     borderWidth: 3,
     flexDirection: "row",
     marginHorizontal: 30,
@@ -120,6 +145,11 @@ const styles = StyleSheet.create({
   Icon: {
     marginHorizontal: 5,
     paddingTop: 7,
+  },
+  PickerStyle: {
+    flex: 1,
+    alignSelf: "center",
+    color: "black",
   },
 });
 

@@ -18,7 +18,7 @@ const UserGoalScreen = ({ navigation }) => {
 
   const onGoalSubmit = () => {
     if (goal != "") {
-      navigation.navigate("UserGender", { goal });
+      navigation.navigate("UserActivity", { goal });
     } else {
       setErrorMessage("Please select your goal!");
     }
@@ -128,7 +128,7 @@ const UserGoalScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#772E92",
+    backgroundColor: "rgba(52, 52, 52, 0.8)",
     justifyContent: "center",
     alignItems: "center",
   },

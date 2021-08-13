@@ -21,8 +21,10 @@ const SignUpScreen = ({ navigation }) => {
   const age = navigation.getParam("age", "");
   const weight = navigation.getParam("weight", "");
   const height = navigation.getParam("height", "");
+  const disease = navigation.getParam("disease", "");
   const gender = navigation.getParam("gender", "");
   const goal = navigation.getParam("goal", "");
+  const activity = navigation.getParam("activity", " ");
 
   const onSignUp = async () => {
     setIsLoading(true);
@@ -44,7 +46,9 @@ const SignUpScreen = ({ navigation }) => {
               gender: gender,
               weight: weight,
               height: height,
+              disease: disease,
               goal: goal,
+              activity: activity,
               uid: response.user.uid,
             });
           await firebase.auth().currentUser.sendEmailVerification();

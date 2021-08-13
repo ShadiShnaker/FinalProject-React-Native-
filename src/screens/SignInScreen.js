@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     //justifyContent: "space-between",
-    backgroundColor: "#772E92",
+    backgroundColor: "rgba(52, 52, 52, 0.8)",
   },
   View1: {
     flex: 0.1,

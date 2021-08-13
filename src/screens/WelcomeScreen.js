@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 
   View1: {
     flex: 0.25,
-    backgroundColor: "#772E92",
+    backgroundColor: "rgba(52, 52, 52, 0.8)",
     borderBottomColor: "#6BE11D",
     justifyContent: "center",
     alignItems: "center",
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     borderWidth: 1,
     borderColor: "#fff",
+    backgroundColor: "rgba(52, 52, 52, 0.5)",
   },
 
   signUpButtonStyle: {

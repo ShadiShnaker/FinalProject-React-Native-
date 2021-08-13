@@ -8,9 +8,11 @@ const UserInfoScreen = ({ navigation }) => {
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [disease, setDisease] = useState("No");
 
   const goal = navigation.getParam("goal", "");
   const gender = navigation.getParam("gender", "");
+  const activity = navigation.getParam("activity", " ");
 
   const onInfoSubmit = () => {
     if (name != "" && age != "" && weight != "" && height != "") {
@@ -21,6 +23,8 @@ const UserInfoScreen = ({ navigation }) => {
         height,
         gender,
         goal,
+        activity,
+        disease,
       });
     } else {
       setErrorMessage("one field or more is empty! please tell us about you.");
@@ -40,6 +44,7 @@ const UserInfoScreen = ({ navigation }) => {
       >
         Tell us more
       </Text>
+
       {errorMessage ? (
         <Text style={{ color: "#FFF", alignSelf: "center", fontSize: 16 }}>
           {errorMessage}
@@ -56,6 +61,8 @@ const UserInfoScreen = ({ navigation }) => {
         onChangeHeight={(newHeight) => setHeight(newHeight)}
         buttonTitle='Modify'
         onModifySubmit={onInfoSubmit}
+        disease={disease}
+        onChangeValue={(newValue) => setDisease(newValue)}
       />
     </View>
   );
@@ -64,7 +71,7 @@ const UserInfoScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#772E92",
+    backgroundColor: "rgba(52, 52, 52, 0.8)",
     paddingTop: 60,
   },
 });

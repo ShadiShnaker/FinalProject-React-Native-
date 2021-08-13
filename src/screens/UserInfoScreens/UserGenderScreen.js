@@ -8,6 +8,7 @@ const UserGenderScreen = ({ navigation }) => {
   const [selected, setselected] = useState("");
   const [value, setValue] = useState("");
   const goal = navigation.getParam("goal", "");
+  const activity = navigation.getParam("activity", " ");
 
   //handle click function
   const _handleClick = (flag) => {
@@ -19,7 +20,7 @@ const UserGenderScreen = ({ navigation }) => {
 
   const onGenderSubmit = () => {
     if (gender != "") {
-      navigation.navigate("UserInfo", { gender, goal });
+      navigation.navigate("UserInfo", { gender, goal, activity });
     } else {
       setErrorMessage("Please select your gender!");
     }
@@ -39,7 +40,8 @@ const UserGenderScreen = ({ navigation }) => {
       <View style={styles.genderView}>
         <View
           style={{
-            backgroundColor: value === "flag1" ? "#CCE5FF" : "#772E92",
+            backgroundColor:
+              value === "flag1" ? "#CCE5FF" : "rgba(52, 52, 52, 0)",
           }}
         >
           <TouchableHighlight
@@ -54,7 +56,8 @@ const UserGenderScreen = ({ navigation }) => {
         </View>
         <View
           style={{
-            backgroundColor: value === "flag2" ? "#FFCCFF" : "#772E92",
+            backgroundColor:
+              value === "flag2" ? "#FFCCFF" : "rgba(52, 52, 52, 0)",
           }}
         >
           <TouchableHighlight
@@ -91,7 +94,7 @@ const UserGenderScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#772E92",
+    backgroundColor: "rgba(52, 52, 52, 0.8)",
     //justifyContent: "center",
   },
 

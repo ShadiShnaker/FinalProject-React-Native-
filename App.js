@@ -13,38 +13,46 @@ import LoadingScreen from "./src/screens/LoadingScreen";
 import EditScreen from "./src/screens/EditScreen";
 import UserInfoScreen from "./src/screens/UserInfoScreens/UserInfoScreen";
 import UserGoalScreen from "./src/screens/UserInfoScreens/UserGoalScreen";
+import NutritionScreen from "./src/screens/NutritionScreen";
+import FoodPlanScreen from "./src/screens/FoodPlanScreen";
+import VitamineInScreen from "./src/screens/VitamineInScreen";
 import UserGenderScreen from "./src/screens/UserInfoScreens/UserGenderScreen";
+import WorkOutMain from "./src/screens/WorkOutScreens/WorkOutMain";
+import WorkOutGuide from "./src/screens/WorkOutScreens/WorkOutGuide";
 import * as firebase from "firebase/app";
 import { firebaseConfig } from "./config/config";
-import { Inonicons } from "@expo/vector-icons";
+import UserActivityScreen from "./src/screens/UserInfoScreens/UserActivityScreen";
+import TrainingPlan from "./src/screens/WorkOutScreens/TrainingPlan";
+import SheduleWorkOut from "./src/screens/WorkOutScreens/ScheduleWorkOut";
+import chronicDiseases from "./src/screens/chronicDiseases";
 
-const AppDrawerNavigator = createDrawerNavigator({
-  Home: {
-    screen: HomeScreen,
-    navigationOptions: {
-      title: "Home",
-    },
+const AppStackNavigator2 = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Settings: SettingsScreen,
+    Edit: EditScreen,
+    Nutrition: NutritionScreen,
+    FoodP: FoodPlanScreen,
+    Vitamine: VitamineInScreen,
+    chronicDiseases: chronicDiseases,
+    WorkOutMain: WorkOutMain,
+    TrainingPlan: TrainingPlan,
+    WorkOutGuide: WorkOutGuide,
+    SheduleWorkOut: SheduleWorkOut,
   },
-
-  Settings: {
-    screen: SettingsScreen,
-    navigationOptions: {
-      title: "Settings",
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      headerShown: false,
     },
-  },
-
-  Edit: {
-    screen: EditScreen,
-    navigationOptions: {
-      title: "Edit Profile",
-    },
-  },
-});
+  }
+);
 
 const AppStackNavigator = createStackNavigator(
   {
     Welcome: WelcomeScreen,
     UserGoal: UserGoalScreen,
+    UserActivity: UserActivityScreen,
     UserGender: UserGenderScreen,
     UserInfo: UserInfoScreen,
     SignUp: SignUpScreen,
@@ -60,7 +68,7 @@ const AppStackNavigator = createStackNavigator(
 const AppSwitchNavigator = createSwitchNavigator({
   LoadingScreen,
   AppStackNavigator,
-  AppDrawerNavigator,
+  AppStackNavigator2,
   SignIn: SignInScreen,
 });
 

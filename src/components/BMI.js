@@ -16,7 +16,7 @@ const BMI = (props) => {
     if (result > 25 && result <= 30) {
       setAdvice("you are overweight! you should loss weight.");
     }
-    if (result > 30 && result <= 40) {
+    if (result > 30) {
       setAdvice("your weight is Obese! you must loss weight.");
     }
   };
@@ -27,18 +27,27 @@ const BMI = (props) => {
     AdviceMessage();
   });
   return (
-    <View style={styles.Container}>
+    <View>
       <Text
         style={{
           alignSelf: "center",
-          paddingTop: 10,
+          marginTop: 10,
           fontSize: 19,
           fontWeight: "bold",
+          color: "#4BD459",
         }}
       >
         {result}
       </Text>
-      <Text style={{ alignSelf: "center", paddingTop: 10, color: "#86789E" }}>
+      <Text
+        style={{
+          alignSelf: "center",
+          marginHorizontal: 8,
+          color: "#fff",
+          fontSize: 14,
+          fontWeight: "bold",
+        }}
+      >
         {advice}
       </Text>
       <Image style={styles.image} source={BMIMet} />
@@ -47,20 +56,9 @@ const BMI = (props) => {
 };
 
 const styles = StyleSheet.create({
-  Container: {
-    flex: 0.2,
-    backgroundColor: "#FFF",
-    borderRadius: 10,
-    borderColor: "#772E92",
-    borderWidth: 3,
-    marginHorizontal: 15,
-    marginTop: 20,
-    paddingBottom: 10,
-  },
-
   image: {
     alignSelf: "center",
-    marginTop: 20,
+    marginTop: 15,
   },
 });
 
